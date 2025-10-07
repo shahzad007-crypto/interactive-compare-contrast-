@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare/Contrast Essay Builder (Oman)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light Gray Background */
+        }
+        .container {
+            max-width: 900px;
+        }
+        .score-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #e5e7eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .score-text-lg {
+            font-size: 32px; /* Font size maintained at 32px */
+            font-weight: bold;
+        }
+        .correct-answer-icon {
+            color: #059669; /* Emerald Green */
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 1.5rem;
+        }
+        /* Updated styles for colorful slides */
+        .form-group {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem; /* Increased padding */
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow */
+            transition: background-color 0.3s ease;
+        }
+        .form-group.intro-slide {
+            background-color: #eef2ff; /* Very light Indigo */
+            border-left-color: #4f46e5;
+        }
+        .form-group.compare-slide {
+            background-color: #f0fdf4; /* Very light Green/Teal */
+            border-left-color: #0d9488;
+        }
+        .form-group.contrast-slide {
+            background-color: #fff7ed; /* Very light Orange */
+            border-left-color: #f97316;
+        }
+        .form-group.conclusion-slide {
+            background-color: #f0fff4; /* Very light Mint */
+            border-left-color: #10b981;
+        }
+        /* End colorful slide styles */
+
+        .input-area {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            resize: vertical;
+            min-height: 50px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .input-area:focus {
+            border-color: #4f46e5;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+        .transition-box {
+            background-color: #cffafe; /* Brighter Teal */
+            color: #065f46;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .completed-circle {
+            background-color: #10b981 !important;
+            color: white !important;
+        }
+        .final-essay-output {
+            white-space: pre-wrap;
+            font-family: Georgia, serif;
+            line-height: 1.8;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px dashed #4f46e5;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center py-12">
+    <div class="container bg-white p-8 rounded-2xl shadow-2xl space-y-8">
+        <header class="text-center space-y-2">
+            <div id="score-display" class="score-circle mx-auto mb-4 font-bold text-gray-700">
+                <span id="score-text" class="score-text-lg">--/4</span>
+            </div>
+            <h1 class="text-3xl font-bold text-gray-800">Omani Essay Builder: Compare/Contrast</h1>
+            <p class="text-lg text-gray-500">Practice building a structured essay on a local topic.</p>
+        </header>
+
+        <form id="essay-form" class="space-y-8">
+
+            <!-- Essay Question -->
+            <section class="form-group bg-yellow-50 border-l-4 border-yellow-500">
+                <h2 class="text-2xl font-bold text-gray-700 mb-2">Essay Question:</h2>
+                <p class="text-xl italic text-gray-600">Compare and contrast the shopping experience in **traditional Omani souqs** and **modern shopping malls**.</p>
+            </section>
+
+            <!-- 1. Introduction -->
+            <section class="form-group intro-slide border-l-4 border-indigo-500">
+                <h2 class="text-xl font-semibold text-gray-700 flex justify-between items-center">
+                    1. Introduction
+                    <span id="q1-icon" class="text-gray-400"></span>
+                </h2>
+                <p class="text-sm text-gray-500 mb-3">Goal: State the topic and provide a clear thesis statement (what two things will be compared and contrasted).</p>
+                
+                <label class="block font-medium text-gray-700">Chunk A: General Opening Sentence (Start broad, like "Oman's retail landscape...")</label>
+                <textarea id="q1a" class="input-area" rows="2" placeholder=""></textarea>
+                
+                <label class="block font-medium text-gray-700 mt-4">Chunk B: Main Argument / Thesis Statement (Clearly state the main point of your comparison and contrast.)</label>
+                <textarea id="q1b" class="input-area" rows="2" placeholder=""></textarea>
+            </section>
+
+            <!-- 2. Compare Paragraph -->
+            <section class="form-group compare-slide border-l-4 border-teal-500">
+                <h2 class="text-xl font-semibold text-gray-700 flex justify-between items-center">
+                    2. Compare Paragraph
+                    <span id="q2-icon" class="text-gray-400"></span>
+                </h2>
+                <p class="text-sm text-gray-500 mb-3">Goal: Discuss how souqs and malls are **similar** (e.g., function as economic centers, offer variety).</p>
+                <p class="text-sm font-bold text-teal-700">Transition Words to Practice: <span class="transition-box">Similarly</span>, <span class="transition-box">Both</span>, <span class="transition-box">In the same way</span></p>
+
+                <label class="block font-medium text-gray-700 mt-4">Chunk A: Topic Sentence (Introduce the similarity point)</label>
+                <textarea id="q2a" class="input-area" rows="2" placeholder=""></textarea>
+                
+                <label class="block font-medium text-gray-700 mt-4">Chunk B: Transitional Sentence & Example (Use a transition word like 'Similarly' or 'Both')</label>
+                <textarea id="q2b" class="input-area" rows="2" placeholder=""></textarea>
+                
+                <label class="block font-medium text-gray-700 mt-4">Chunk C: Concluding/Supporting Sentence</label>
+                <textarea id="q2c" class="input-area" rows="2" placeholder=""></textarea>
+            </section>
+
+            <!-- 3. Contrast Paragraph -->
+            <section class="form-group contrast-slide border-l-4 border-orange-500">
+                <h2 class="text-xl font-semibold text-gray-700 flex justify-between items-center">
+                    3. Contrast Paragraph
+                    <span id="q3-icon" class="text-gray-400"></span>
+                </h2>
+                <p class="text-sm text-gray-500 mb-3">Goal: Discuss how souqs and malls are **different** (e.g., atmosphere, price negotiation, social interaction).</p>
+                <p class="text-sm font-bold text-orange-700">Transition Words to Practice: <span class="transition-box bg-orange-100 text-orange-700">On the other hand</span>, <span class="transition-box bg-orange-100 text-orange-700">While</span>, <span class="transition-box bg-orange-100 text-orange-700">However</span></p>
+
+                <label class="block font-medium text-gray-700 mt-4">Chunk A: Topic Sentence with Contrast Transition</label>
+                <textarea id="q3a" class="input-area" rows="2" placeholder=""></textarea>
+                
+                <label class="block font-medium text-gray-700 mt-4">Chunk B: Supporting Sentence 1 (Contrast Souq vs. Mall Vibe)</label>
+                <textarea id="q3b" class="input-area" rows="2" placeholder=""></textarea>
+                
+                <label class="block font-medium text-gray-700 mt-4">Chunk C: Supporting Sentence 2 (Contrast Negotiation/Pricing)</label>
+                <textarea id="q3c" class="input-area" rows="2" placeholder=""></textarea>
+            </section>
+
+            <!-- 4. Conclusion -->
+            <section class="form-group conclusion-slide border-l-4 border-green-500">
+                <h2 class="text-xl font-semibold text-gray-700 flex justify-between items-center">
+                    4. Conclusion
+                    <span id="q4-icon" class="text-gray-400"></span>
+                </h2>
+                <p class="text-sm text-gray-500 mb-3">Goal: Summarize main points and provide a final personal opinion/commentary.</p>
+                
+                <label class="block font-medium text-gray-700">Chunk A: Summary Sentence (Use transition word like 'In conclusion' or 'To sum up')</label>
+                <textarea id="q4a" class="input-area" rows="2" placeholder=""></textarea>
+                
+                <label class="block font-medium text-gray-700 mt-4">Chunk B: Personal Opinion/Final Thought (Why is this topic important to Oman?)</label>
+                <textarea id="q4b" class="input-area" rows="2" placeholder=""></textarea>
+            </section>
+
+            <button type="submit" id="submit-button" class="w-full bg-indigo-600 text-white font-bold py-4 px-6 rounded-xl hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition duration-300 shadow-lg">
+                Submit and View Final Essay
+            </button>
+        </form>
+
+        <!-- Final Essay Output Area -->
+        <section id="essay-output" class="hidden mt-8">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4 border-b pb-2">Your Final Draft</h2>
+            <div id="essay-text" class="final-essay-output"></div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('essay-form');
+            const submitButton = document.getElementById('submit-button');
+            const scoreText = document.getElementById('score-text');
+            const scoreCircle = document.getElementById('score-display');
+            const essayOutput = document.getElementById('essay-output');
+            const essayText = document.getElementById('essay-text');
+
+            const totalQuestions = 4; // 4 main sections (Introduction, Compare, Contrast, Conclusion)
+
+            // Helper function to check if a section is sufficiently filled
+            const isSectionComplete = (qIds) => {
+                let complete = true;
+                qIds.forEach(id => {
+                    const input = document.getElementById(id);
+                    // Check for minimum length (10 characters) to ensure content is written
+                    if (!input || input.value.trim().length < 10) { 
+                        complete = false;
+                    }
+                });
+                return complete;
+            };
+            
+            // Helper function to build the essay
+            const buildEssay = () => {
+                const intro = document.getElementById('q1a').value.trim() + " " + document.getElementById('q1b').value.trim();
+                const compare = document.getElementById('q2a').value.trim() + " " + document.getElementById('q2b').value.trim() + " " + document.getElementById('q2c').value.trim();
+                const contrast = document.getElementById('q3a').value.trim() + " " + document.getElementById('q3b').value.trim() + " " + document.getElementById('q3c').value.trim();
+                const conclusion = document.getElementById('q4a').value.trim() + " " + document.getElementById('q4b').value.trim();
+                
+                // Use double newlines for paragraph breaks in pre-wrap
+                return "Introduction:\n" + intro + "\n\n" +
+                       "Comparison:\n" + compare + "\n\n" +
+                       "Contrast:\n" + contrast + "\n\n" +
+                       "Conclusion:\n" + conclusion;
+            };
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                let sectionsCompleted = 0;
+                const sectionMap = {
+                    1: ['q1a', 'q1b'],
+                    2: ['q2a', 'q2b', 'q2c'],
+                    3: ['q3a', 'q3b', 'q3c'],
+                    4: ['q4a', 'q4b']
+                };
+
+                // Clear previous icons
+                document.querySelectorAll('.correct-answer-icon').forEach(el => el.remove());
+
+                // Check and mark each section
+                for (let i = 1; i <= totalQuestions; i++) {
+                    const qIcon = document.getElementById(`q${i}-icon`);
+                    
+                    if (isSectionComplete(sectionMap[i])) {
+                        sectionsCompleted++;
+                        qIcon.innerHTML = `<span class="correct-answer-icon">✓</span>`;
+                    } else {
+                        // Mark incomplete section with a red cross (X)
+                        qIcon.innerHTML = `<span class="text-red-500 font-bold text-xl ml-2">✗</span>`;
+                    }
+                }
+
+                const finalScore = sectionsCompleted;
+
+                // Disable all form elements
+                const formElements = form.querySelectorAll('textarea, button');
+                formElements.forEach(el => el.disabled = true);
+                
+                // Display total score
+                scoreText.textContent = `${finalScore}/${totalQuestions}`;
+                scoreCircle.classList.add('completed-circle');
+                
+                // Display the final built essay
+                essayText.textContent = buildEssay();
+                essayOutput.classList.remove('hidden');
+
+                // Set 10-minute lock
+                setTimeout(() => {
+                    formElements.forEach(el => el.disabled = false);
+                    scoreText.textContent = `--/${totalQuestions}`;
+                    scoreCircle.classList.remove('completed-circle');
+                    
+                    // Reset icons and hide essay output
+                    document.querySelectorAll('.correct-answer-icon').forEach(el => el.remove());
+                    document.querySelectorAll('.text-red-500').forEach(el => el.remove());
+                    essayOutput.classList.add('hidden');
+                }, 600000); // 10 minutes (600000 ms)
+            });
+        });
+    </script>
+</body>
+</html>
